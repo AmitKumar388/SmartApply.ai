@@ -34,14 +34,14 @@
 ## 🛠️ Tech Stack
 
 | Layer       | Technology                         |
-|------------|-------------------------------------|
-| Frontend    | React.js + TailwindCSS + TypeScript |
+|-------------|------------------------------------|
+| Frontend    | React.js + TailwindCSS + TypeScript|
 | Backend     | Supabase, Node.js, Express.js      |
 | AI Engine   | Google Gemini via API              |
 | File Parsing| `pdfplumber`, `python-docx`        |
 | Auth        | JWT + bcrypt                       |
 | Database    | MongoDB                            |
-| Deployment  | Vercel(Frontend), Railway/Render(Backend) |
+| Deployment  | Vercel(Frontend), Render(Backend)  |
 
 ---
 
