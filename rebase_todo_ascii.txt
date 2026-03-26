@@ -1,0 +1,5 @@
+[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;10r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[10;1H<base-todo"
+< 86L, 3865B[1;1H[32mpick[m [36m59b92b7[m[31m # Use tech  [2;1Hstack vite_react_shadcn__[3;1Hts[m
+[32mpick[m [36m37c3437[m[31m # feat: Impp[5;1Hlement SmartApply.AI full[6;1Hl-stack application[m
+[32mpick[m [36mdcd9833[m[31m # Connect tt[8;1Ho Supabase project[m
+[1m[7m<9:09 26/03/2026)1,1 Top[1;1H[?25h[?4m[10;1H[?2004l[>4;m[23;2t[23;1t[m[10;1H[K[10;1H[?1004l[?2004l[?1l>[?1049l[23;0;0t[>4;m
