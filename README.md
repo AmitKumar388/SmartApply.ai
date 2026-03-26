@@ -33,16 +33,32 @@
 
 ## 🛠️ Tech Stack
 
-| Layer       | Technology                         |
-|-------------|------------------------------------|
-| Frontend    | React.js + TailwindCSS + TypeScript|
-| Backend     | Supabase, Node.js, Express.js      |
-| AI Engine   | Google Gemini via API              |
-| File Parsing| `pdfplumber`, `python-docx`        |
-| Auth        | JWT + bcrypt                       |
-| Database    | MongoDB                            |
-| Deployment  | Vercel(Frontend), Render(Backend)  |
+| Layer        | Technology                          |
+| ------------ | ----------------------------------- |
+| Frontend     | React.js + TailwindCSS + TypeScript |
+| Backend      | Supabase, Node.js, Express.js       |
+| AI Engine    | Google Gemini via API               |
+| File Parsing | `pdfplumber`, `python-docx`         |
+| Auth         | JWT + bcrypt                        |
+| Database     | MongoDB                             |
+| Deployment   | Vercel(Frontend), Render(Backend)   |
 
 ---
 
 ## 📁 Project Structure
+
+---
+
+## ⚙️ Deployment Env Setup
+
+If frontend is deployed on Vercel and backend on Render, set these env vars:
+
+- `Vercel (Frontend)`
+  - `VITE_API_URL=https://<your-render-service>.onrender.com/api`
+
+- `Render (Backend)`
+  - `FRONTEND_URL=https://smart-apply-ai-ten.vercel.app`
+  - Optional: `FRONTEND_URLS=https://smart-apply-ai-ten.vercel.app,http://localhost:8080`
+  - `PORT=5000` (or keep Render default)
+
+Without `VITE_API_URL`, production builds may fall back to local endpoints in older code and fail with CORS / loopback errors.

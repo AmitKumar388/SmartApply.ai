@@ -1,4 +1,9 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const envApiUrl = import.meta.env.VITE_API_URL?.trim();
+
+// Never call localhost from a deployed frontend. In production, default to same-origin /api.
+const API_URL = (
+  envApiUrl || (import.meta.env.DEV ? "http://localhost:5000/api" : "/api")
+).replace(/\/$/, "");
 
 const getToken = () => localStorage.getItem("token");
 
@@ -122,15 +127,14 @@ export const applicationsApi = {
       jobTitle?: string;
       status?: string;
       notes?: string;
-    }
+    },
   ) =>
     request(`/applications/${id}`, {
       method: "PUT",
       body: JSON.stringify(data),
     }),
 
-  delete: (id: string) =>
-    request(`/applications/${id}`, { method: "DELETE" }),
+  delete: (id: string) => request(`/applications/${id}`, { method: "DELETE" }),
 };
 
 // ---- Interview Questions ----
@@ -145,7 +149,7 @@ export const interviewsApi = {
 
   saveAnswer: (
     id: string,
-    data: { userAnswer?: string; aiSuggestion?: string }
+    data: { userAnswer?: string; aiSuggestion?: string },
   ) =>
     request(`/interviews/${id}`, {
       method: "PUT",
@@ -179,8 +183,7 @@ export const resumesApi = {
 
   getAllAnalyses: () => request("/resumes/analyses/all"),
 
-  delete: (id: string) =>
-    request(`/resumes/${id}`, { method: "DELETE" }),
+  delete: (id: string) => request(`/resumes/${id}`, { method: "DELETE" }),
 };
 
 // ---- Optimizations ----
@@ -193,8 +196,7 @@ export const optimizationsApi = {
       body: JSON.stringify({ resumeContent, jobDescription }),
     }),
 
-  delete: (id: string) =>
-    request(`/optimizations/${id}`, { method: "DELETE" }),
+  delete: (id: string) => request(`/optimizations/${id}`, { method: "DELETE" }),
 };
 
 // ---- Dashboard ----

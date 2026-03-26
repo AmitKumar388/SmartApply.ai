@@ -15,8 +15,22 @@ import dashboardRoutes from "./routes/dashboard.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
+const allowedOrigins = new Set(config.frontendUrls);
+
 // Middleware
-app.use(cors({ origin: config.frontendUrl, credentials: true }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow non-browser requests (e.g. health checks, curl, server-to-server).
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.has(origin)) return callback(null, true);
+
+      return callback(new Error(`Origin not allowed by CORS: ${origin}`));
+    },
+    credentials: true,
+  }),
+);
 app.use(express.json({ limit: "10mb" }));
 app.use("/uploads", express.static(path.resolve(__dirname, "../uploads")));
 
