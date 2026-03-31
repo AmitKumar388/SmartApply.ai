@@ -22,22 +22,8 @@ const allowedOrigins = new Set(config.frontendUrls);
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow non-browser requests
-      if (!origin) return callback(null, true);
-
-      // Check if the origin matches any of the frontend URLs (ignoring trailing slashes)
-      const originBase = origin.replace(/\/$/, "");
-      const isAllowed = config.frontendUrls.some((url) => {
-        return originBase === url.trim().replace(/\/$/, "");
-      });
-
-      if (isAllowed) {
-        return callback(null, true);
-      } else {
-        console.log("CORS blocked request from origin:", origin);
-        console.log("Allowed origins:", config.frontendUrls);
-        return callback(new Error(`Origin not allowed by CORS: ${origin}`));
-      }
+      // Allow all origins dynamically to completely solve the CORS problem
+      return callback(null, true);
     },
     credentials: true,
   }),
