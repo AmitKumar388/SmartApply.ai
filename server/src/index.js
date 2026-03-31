@@ -11,7 +11,8 @@ import interviewRoutes from "./routes/interviews.js";
 import resumeRoutes from "./routes/resumes.js";
 import optimizationRoutes from "./routes/optimizations.js";
 import dashboardRoutes from "./routes/dashboard.js";
-
+import dotenv from "dotenv";
+dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
