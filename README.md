@@ -88,8 +88,8 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 Amit Kumar
-GitHub: https://github.com/AmitKumar388
-LinkedIn: https://www.linkedin.com/in/amitkumar-developer/
+- GitHub: https://github.com/AmitKumar388
+- LinkedIn: https://www.linkedin.com/in/amitkumar-developer/
 
 ## ⭐ Support
 If you like this project, give it a ⭐ on GitHub!
