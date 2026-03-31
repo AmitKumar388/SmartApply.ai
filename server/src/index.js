@@ -21,13 +21,23 @@ const allowedOrigins = new Set(config.frontendUrls);
 // Middleware
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // Allow non-browser requests (e.g. health checks, curl, server-to-server).
+    origin: function (origin, callback) {
+      // Allow non-browser requests
       if (!origin) return callback(null, true);
 
-      if (allowedOrigins.has(origin)) return callback(null, true);
+      // Check if the origin matches any of the frontend URLs (ignoring trailing slashes)
+      const originBase = origin.replace(/\/$/, "");
+      const isAllowed = config.frontendUrls.some((url) => {
+        return originBase === url.trim().replace(/\/$/, "");
+      });
 
-      return callback(new Error(`Origin not allowed by CORS: ${origin}`));
+      if (isAllowed) {
+        return callback(null, true);
+      } else {
+        console.log("CORS blocked request from origin:", origin);
+        console.log("Allowed origins:", config.frontendUrls);
+        return callback(new Error(`Origin not allowed by CORS: ${origin}`));
+      }
     },
     credentials: true,
   }),
